@@ -13,6 +13,7 @@
             text-align: center;
             padding: 50px;
             background-color: #f0f0f0;
+            animation: fadeIn 2s ease-in-out;
         }
         h1 {
             color: #004d99;
@@ -22,7 +23,7 @@
             margin-top: 40px;
         }
         p {
-            font-family: Arial, sans-serif; /* Se mantiene una fuente legible para el cuerpo de texto */
+            font-family: Arial, sans-serif;
             color: #333;
             max-width: 600px;
             margin: 10px auto;
@@ -45,20 +46,23 @@
             font-family: 'MedievalSharp', cursive;
             text-decoration: none;
             font-weight: bold;
-            padding: 15px 25px;
-            width: 180px;
-            border: 2px solid #a1887f;
+            padding: 12px 20px;
+            border: 2px solid #a71d1d;
             border-radius: 8px;
             display: inline-block;
-            background-color: #a1887f;
-            color: white;
+            background-color: #c62828;
+            color: #fff;
             cursor: pointer;
             box-sizing: border-box;
             margin-top: 30px;
         }
         .back-button:hover {
-            background-color: white;
-            color: #a1887f;
+            background-color: #fff;
+            color: #c62828;
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
         }
     </style>
 </head>
