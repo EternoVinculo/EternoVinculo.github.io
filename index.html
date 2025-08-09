@@ -12,7 +12,6 @@
             background-color: #f0f0f0;
         }
 
-        /* --- Estilo de la imagen de fondo con transparencia --- */
         body::before {
             content: "";
             position: fixed;
@@ -42,20 +41,18 @@
             line-height: 1.6;
         }
         
-        /* --- Estilo de las imágenes con animación al pasar el cursor --- */
         img {
             width: 100%;
             max-width: 500px;
             height: auto;
             margin-top: 20px;
-            transition: transform 0.3s ease; /* Transición suave */
-            cursor: pointer; /* Cambia el cursor para indicar que es interactiva */
+            transition: transform 0.3s ease;
+            cursor: pointer;
         }
         img:hover {
-            transform: scale(1.05); /* Agranda la imagen al 5% al pasar el mouse */
+            transform: scale(1.05);
         }
         
-        /* --- Estilo para los botones de navegación --- */
         .nav-buttons {
             margin-bottom: 30px;
         }
@@ -68,33 +65,60 @@
         .nav-buttons a:hover {
             text-decoration: underline;
         }
+        
+        /* Estilo para el botón de la galería */
+        #gallery-toggle {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: 1px solid #004d99;
+            background-color: #004d99;
+            color: white;
+            border-radius: 5px;
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+        
+        /* Oculta la galería por defecto */
+        #gallery-container {
+            display: none;
+        }
     </style>
+    <script>
+        function toggleGallery() {
+            var gallery = document.getElementById("gallery-container");
+            if (gallery.style.display === "none") {
+                gallery.style.display = "block";
+            } else {
+                gallery.style.display = "none";
+            }
+        }
+    </script>
 </head>
 <body>
 
-    <div class="nav-buttons">
-        <a href="#historia">Mi Historia</a> |
-        <a href="#galeria">Galería de Fotos</a>
-    </div>
-
     <h1 id="inicio">Para todos los que me extrañan</h1>
-
-    <h2 id="historia">Mi Historia</h2>
+    
+    <h2>Mi Historia</h2>
     <p>Mi nombre es Miguel Humberto Yáñez Hermosilla. Nací el 4 de agosto de 1945, fruto del amor de mis padres, Héctor José Yáñez González y Elcira del Carmen Hermosilla González.</p>
     <p>A lo largo de mi vida, me dediqué con gran pasión y maestría a mi oficio: ser maestro enfierrador. Para mí, no era solo un trabajo, era mi vocación. Mis alicates eran mi extensión, mi herramienta más preciada, y encontrar la perfección en el arte de hacer cadenas para pilares era una de mis grandes satisfacciones.</p>
     <p>Fui un hombre que valoraba el trabajo arduo y el esfuerzo. Dediqué mi vida entera a mi labor y, por encima de todo, a mi familia, quienes siempre fueron mi mayor motivación.</p>
     
     <p>No estén tristes por mi partida. Miren al cielo, y sepan que siempre estoy aquí, con ustedes.</p>
 
-    <h2 id="galeria">Galería de Recuerdos</h2>
-    <img src="1.jpeg" alt="Recuerdo 1">
-    <img src="2.jpeg" alt="Recuerdo 2">
-    <img src="3.jpeg" alt="Recuerdo 3">
-    <img src="4.jpeg" alt="Recuerdo 4">
-    <img src="5.jpeg" alt="Recuerdo 5">
-    <img src="6.jpeg" alt="Recuerdo 6">
-    <img src="7.jpeg" alt="Recuerdo 7">
-    
+    <button id="gallery-toggle" onclick="toggleGallery()">Ver Galería de Fotos</button>
+
+    <div id="gallery-container">
+        <h2>Galería de Recuerdos</h2>
+        <img src="1.jpg" alt="Recuerdo 1">
+        <img src="2.jpg" alt="Recuerdo 2">
+        <img src="3.jpg" alt="Recuerdo 3">
+        <img src="4.jpg" alt="Recuerdo 4">
+        <img src="5.jpg" alt="Recuerdo 5">
+        <img src="6.jpg" alt="Recuerdo 6">
+        <img src="7.jpg" alt="Recuerdo 7">
+    </div>
+
     <p>Guarden en sus corazones nuestros recuerdos. Vivan sus vidas con alegría y amor, y sepan que nuestro vínculo es eterno y que nos volveremos a encontrar.</p>
 </body>
 </html>
