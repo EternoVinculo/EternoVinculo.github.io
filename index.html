@@ -41,22 +41,10 @@
             line-height: 1.6;
         }
         
-        img {
-            width: 100%;
-            max-width: 500px;
-            height: auto;
-            margin-top: 20px;
-            transition: transform 0.3s ease;
-            cursor: pointer;
-        }
-        img:hover {
-            transform: scale(1.05);
-        }
-        
         .nav-buttons {
             margin-bottom: 30px;
         }
-        .nav-buttons a, .nav-buttons button {
+        .nav-buttons a {
             color: #004d99;
             text-decoration: none;
             margin: 0 15px;
@@ -65,37 +53,19 @@
             border: 1px solid #004d99;
             border-radius: 5px;
             display: inline-block;
-            background-color: white; /* Color de fondo para que se vea como botón */
+            background-color: white;
             cursor: pointer;
         }
-        .nav-buttons a:hover, .nav-buttons button:hover {
+        .nav-buttons a:hover {
             background-color: #004d99;
             color: white;
         }
-        
-        /* Oculta la galería por defecto */
-        #gallery-container {
-            display: none;
-        }
     </style>
-    <script>
-        function toggleGallery() {
-            var gallery = document.getElementById("gallery-container");
-            var button = document.getElementById("gallery-toggle-button");
-            if (gallery.style.display === "none") {
-                gallery.style.display = "block";
-                button.textContent = "Ocultar Galería de Fotos";
-            } else {
-                gallery.style.display = "none";
-                button.textContent = "Galería de Fotos";
-            }
-        }
-    </script>
 </head>
 <body>
 
     <div class="nav-buttons">
-        <button id="gallery-toggle-button" onclick="toggleGallery()">Galería de Fotos</button>
+        <a href="galeria.html">Galería de Fotos</a>
         <a href="contacto.html" target="_blank">Contacto</a>
     </div>
 
@@ -107,16 +77,6 @@
     <p>Fui un hombre que valoraba el trabajo arduo y el esfuerzo. Dediqué mi vida entera a mi labor y, por encima de todo, a mi familia, quienes siempre fueron mi mayor motivación.</p>
     
     <p>No estén tristes por mi partida. Miren al cielo, y sepan que siempre estoy aquí, con ustedes.</p>
-
-    <div id="gallery-container">
-        <img src="1.jpg" alt="Recuerdo 1">
-        <img src="2.jpg" alt="Recuerdo 2">
-        <img src="3.jpg" alt="Recuerdo 3">
-        <img src="4.jpg" alt="Recuerdo 4">
-        <img src="5.jpg" alt="Recuerdo 5">
-        <img src="6.jpg" alt="Recuerdo 6">
-        <img src="7.jpg" alt="Recuerdo 7">
-    </div>
 
     <p>Guarden en sus corazones nuestros recuerdos. Vivan sus vidas con alegría y amor, y sepan que nuestro vínculo es eterno y que nos volveremos a encontrar.</p>
 </body>
