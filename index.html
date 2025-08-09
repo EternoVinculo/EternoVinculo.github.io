@@ -9,11 +9,10 @@
             font-family: Arial, sans-serif;
             text-align: center;
             padding: 50px;
-            /* Se establece el fondo con la imagen, que es la base para el pseudo-elemento */
-            background-color: #f0f0f0; /* Un color de fondo por si la imagen no carga */
+            background-color: #f0f0f0;
         }
-        
-        /* --- Pseudo-elemento para el fondo transparente --- */
+
+        /* --- Estilo de la imagen de fondo con transparencia --- */
         body::before {
             content: "";
             position: fixed;
@@ -25,35 +24,69 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            opacity: 0.2; /* Este es el valor que controla la transparencia (0.0 es invisible, 1.0 es opaco) */
-            z-index: -1; /* Esto asegura que la imagen de fondo esté detrás de todo el contenido */
+            opacity: 0.2;
+            z-index: -1;
         }
-        /* ------------------------------------------------ */
 
         h1 {
-            color: #004d99; /* Un color azul para el título */
+            color: #004d99;
+        }
+        h2 {
+            color: #333;
+            margin-top: 40px;
         }
         p {
             color: #333;
+            max-width: 800px;
+            margin: 0 auto 20px;
+            line-height: 1.6;
         }
+        
+        /* --- Estilo de las imágenes con animación al pasar el cursor --- */
         img {
             width: 100%;
             max-width: 500px;
             height: auto;
-            margin-top: 20px; /* Para separar las imágenes de recuerdos */
+            margin-top: 20px;
+            transition: transform 0.3s ease; /* Transición suave */
+            cursor: pointer; /* Cambia el cursor para indicar que es interactiva */
+        }
+        img:hover {
+            transform: scale(1.05); /* Agranda la imagen al 5% al pasar el mouse */
+        }
+        
+        /* --- Estilo para los botones de navegación --- */
+        .nav-buttons {
+            margin-bottom: 30px;
+        }
+        .nav-buttons a {
+            color: #004d99;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+        .nav-buttons a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
-    <h1>Para todos los que me extrañan</h1>
-    
-    <h2>Mi Historia</h2>
+
+    <div class="nav-buttons">
+        <a href="#historia">Mi Historia</a> |
+        <a href="#galeria">Galería de Fotos</a>
+    </div>
+
+    <h1 id="inicio">Para todos los que me extrañan</h1>
+
+    <h2 id="historia">Mi Historia</h2>
     <p>Mi nombre es Miguel Humberto Yáñez Hermosilla. Nací el 4 de agosto de 1945, fruto del amor de mis padres, Héctor José Yáñez González y Elcira del Carmen Hermosilla González.</p>
     <p>A lo largo de mi vida, me dediqué con gran pasión y maestría a mi oficio: ser maestro enfierrador. Para mí, no era solo un trabajo, era mi vocación. Mis alicates eran mi extensión, mi herramienta más preciada, y encontrar la perfección en el arte de hacer cadenas para pilares era una de mis grandes satisfacciones.</p>
     <p>Fui un hombre que valoraba el trabajo arduo y el esfuerzo. Dediqué mi vida entera a mi labor y, por encima de todo, a mi familia, quienes siempre fueron mi mayor motivación.</p>
     
     <p>No estén tristes por mi partida. Miren al cielo, y sepan que siempre estoy aquí, con ustedes.</p>
-    
+
+    <h2 id="galeria">Galería de Recuerdos</h2>
     <img src="1.jpeg" alt="Recuerdo 1">
     <img src="2.jpeg" alt="Recuerdo 2">
     <img src="3.jpeg" alt="Recuerdo 3">
@@ -65,7 +98,3 @@
     <p>Guarden en sus corazones nuestros recuerdos. Vivan sus vidas con alegría y amor, y sepan que nuestro vínculo es eterno y que nos volveremos a encontrar.</p>
 </body>
 </html>
-
-
-
-
