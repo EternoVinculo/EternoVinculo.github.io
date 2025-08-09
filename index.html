@@ -55,9 +55,8 @@
         
         .nav-buttons {
             margin-bottom: 30px;
-            text-align: right; /* Alinea los botones a la derecha */
         }
-        .nav-buttons a {
+        .nav-buttons a, .nav-buttons button {
             color: #004d99;
             text-decoration: none;
             margin: 0 15px;
@@ -66,23 +65,12 @@
             border: 1px solid #004d99;
             border-radius: 5px;
             display: inline-block;
-        }
-        .nav-buttons a:hover {
-            background-color: #004d99;
-            color: white;
-        }
-        
-        /* Estilo para el botón de la galería */
-        #gallery-toggle {
-            padding: 10px 20px;
-            font-size: 16px;
+            background-color: white; /* Color de fondo para que se vea como botón */
             cursor: pointer;
-            border: 1px solid #004d99;
+        }
+        .nav-buttons a:hover, .nav-buttons button:hover {
             background-color: #004d99;
             color: white;
-            border-radius: 5px;
-            margin-top: 30px;
-            margin-bottom: 30px;
         }
         
         /* Oculta la galería por defecto */
@@ -93,10 +81,13 @@
     <script>
         function toggleGallery() {
             var gallery = document.getElementById("gallery-container");
+            var button = document.getElementById("gallery-toggle-button");
             if (gallery.style.display === "none") {
                 gallery.style.display = "block";
+                button.textContent = "Ocultar Galería de Fotos";
             } else {
                 gallery.style.display = "none";
+                button.textContent = "Galería de Fotos";
             }
         }
     </script>
@@ -104,8 +95,7 @@
 <body>
 
     <div class="nav-buttons">
-        <a href="#historia">Mi Historia</a>
-        <a href="#" onclick="toggleGallery()">Galería de Fotos</a>
+        <button id="gallery-toggle-button" onclick="toggleGallery()">Galería de Fotos</button>
         <a href="contacto.html" target="_blank">Contacto</a>
     </div>
 
@@ -118,9 +108,7 @@
     
     <p>No estén tristes por mi partida. Miren al cielo, y sepan que siempre estoy aquí, con ustedes.</p>
 
-    <button id="gallery-toggle" onclick="toggleGallery()">Ver Galería de Fotos</button>
     <div id="gallery-container">
-        <h2>Galería de Recuerdos</h2>
         <img src="1.jpg" alt="Recuerdo 1">
         <img src="2.jpg" alt="Recuerdo 2">
         <img src="3.jpg" alt="Recuerdo 3">
