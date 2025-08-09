@@ -13,6 +13,7 @@
             text-align: center;
             padding: 50px;
             background-color: #f0f0f0;
+            animation: fadeIn 2s ease-in-out;
         }
         h1 {
             color: #004d99;
@@ -30,25 +31,37 @@
             height: auto;
             margin-top: 20px;
             border-radius: 8px;
+            animation: fadeIn 1.5s ease-in-out;
+            opacity: 0;
+            animation-fill-mode: forwards;
         }
+        img:nth-child(2) { animation-delay: 0.5s; }
+        img:nth-child(3) { animation-delay: 1s; }
+        img:nth-child(4) { animation-delay: 1.5s; }
+        img:nth-child(5) { animation-delay: 2s; }
+        img:nth-child(6) { animation-delay: 2.5s; }
+        img:nth-child(7) { animation-delay: 3s; }
+        
         .back-button {
             font-family: 'MedievalSharp', cursive;
             text-decoration: none;
             font-weight: bold;
-            padding: 15px 25px;
-            width: 180px;
-            border: 2px solid #a1887f;
+            padding: 12px 20px;
+            border: 2px solid #a71d1d;
             border-radius: 8px;
             display: inline-block;
-            background-color: #a1887f;
-            color: white;
-            cursor: pointer;
-            box-sizing: border-box;
+            background-color: #c62828;
+            color: #fff;
             margin-top: 30px;
+            margin-bottom: 30px;
         }
         .back-button:hover {
-            background-color: white;
-            color: #a1887f;
+            background-color: #fff;
+            color: #c62828;
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
         }
     </style>
 </head>
