@@ -12,7 +12,7 @@
             font-family: 'MedievalSharp', cursive;
             text-align: center;
             background-color: #f0f0f0;
-            margin: 0; /* Asegura que no haya márgenes para el iframe */
+            margin: 0;
             animation: fadeIn 2s ease-in-out;
         }
 
@@ -30,7 +30,7 @@
             opacity: 0.2;
             z-index: -1;
         }
-        
+
         .nav-buttons {
             padding: 20px 0;
         }
@@ -45,6 +45,7 @@
             background-color: #c62828;
             color: #fff;
             margin: 0 15px;
+            cursor: pointer;
         }
         .nav-buttons a:hover {
             background-color: #fff;
@@ -56,29 +57,81 @@
             100% { opacity: 1; }
         }
 
-        /* Estilos para el iframe */
         .content-frame {
             width: 100%;
-            height: 85vh; /* Ocupa el 85% de la altura de la ventana */
+            height: 85vh;
             border: none;
+            background-color: transparent;
         }
 
-        /* Estilos del iframe */
-        #main-frame {
-            background-color: transparent;
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 85vh;
+        }
+
+        #start-button {
+            font-family: 'MedievalSharp', cursive;
+            padding: 15px 30px;
+            font-size: 1.5em;
+            cursor: pointer;
+            border: 2px solid #a71d1d;
+            border-radius: 10px;
+            background-color: #c62828;
+            color: white;
+            text-decoration: none;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        #start-button:hover {
+            background-color: #fff;
+            color: #c62828;
         }
     </style>
 </head>
 <body>
-    <audio src="fondo_musical.mp3" autoplay loop></audio>
+    <audio id="audioPlayer" src="fondo_musical.mp3" loop></audio>
 
-    <div class="nav-buttons">
+    <div class="nav-buttons" id="navMenu" style="display:none;">
         <a href="inicio_contenido.html" target="main-frame">Inicio</a> 
         <a href="galeria.html" target="main-frame">Galería de Fotos</a>
         <a href="contacto.html" target="main-frame">Contacto</a>
     </div>
 
-    <iframe name="main-frame" id="main-frame" src="inicio_contenido.html" class="content-frame"></iframe>
+    <div id="welcomeScreen" class="main-content">
+        <button id="start-button">Entrar</button>
+    </div>
 
+    <iframe name="main-frame" id="main-frame" src="about:blank" class="content-frame" style="display:none;"></iframe>
+
+    <script>
+        const audio = document.getElementById('audioPlayer');
+        const startButton = document.getElementById('start-button');
+        const welcomeScreen = document.getElementById('welcomeScreen');
+        const navMenu = document.getElementById('navMenu');
+        const iframe = document.getElementById('main-frame');
+
+        startButton.addEventListener('click', () => {
+            // Intenta reproducir el audio
+            audio.play().then(() => {
+                // Si la reproducción es exitosa, oculta la pantalla de bienvenida
+                welcomeScreen.style.display = 'none';
+                // Muestra la navegación y el iframe
+                navMenu.style.display = 'block';
+                iframe.style.display = 'block';
+                // Carga el contenido inicial en el iframe
+                iframe.src = 'inicio_contenido.html';
+            }).catch(error => {
+                // Si hay un error (ej. el navegador lo bloquea), sigue adelante y el usuario podrá activarlo después
+                console.log("El autoplay fue bloqueado, el usuario deberá interactuar con el reproductor.");
+                welcomeScreen.style.display = 'none';
+                navMenu.style.display = 'block';
+                iframe.style.display = 'block';
+                iframe.src = 'inicio_contenido.html';
+            });
+        });
+    </script>
 </body>
 </html>
