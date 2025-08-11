@@ -3,17 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página de Miguel Yáñez</title>
+    <title>Eterno Vínculo - Miguel Yáñez</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet">
     <style>
+        /* Estilos generales y del fondo */
         body {
             font-family: 'MedievalSharp', cursive;
             text-align: center;
             background-color: #f0f0f0;
             margin: 0;
             animation: fadeIn 2s ease-in-out;
+            color: #333;
         }
 
         body::before {
@@ -31,68 +33,53 @@
             z-index: -1;
         }
 
-        .nav-buttons {
-            padding: 20px 0;
-        }
-        .nav-buttons a {
-            font-family: 'MedievalSharp', cursive;
-            text-decoration: none;
-            font-weight: bold;
-            padding: 12px 20px;
-            border: 2px solid #a71d1d;
-            border-radius: 8px;
-            display: inline-block;
-            background-color: #c62828;
-            color: #fff;
-            margin: 0 15px;
-            cursor: pointer;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-        .nav-buttons a:hover {
-            background-color: #fff;
-            color: #c62828;
-        }
-        .nav-buttons a:active {
-            background-color: #a71d1d;
-            color: #fff;
-        }
-
+        /* Animaciones */
         @keyframes fadeIn {
             0% { opacity: 0; }
             100% { opacity: 1; }
         }
 
-        .content-frame {
-            width: 100%;
-            height: 85vh;
-            border: none;
-            background-color: transparent;
+        /* Contenedor principal de la página */
+        .content-section {
+            display: none; /* Oculta todas las secciones por defecto */
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.85); /* Fondo semitransparente para el contenido */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1s ease-in-out;
         }
 
-        .main-content {
+        /* Pantalla de bienvenida (visible al inicio) */
+        #welcome-screen {
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            color: #333;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            min-height: 100vh;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            padding: 20px;
         }
-        
-        .main-content h1 {
-            font-size: 3em;
+        #welcome-screen.hidden {
+            display: none;
+        }
+
+        .welcome-screen h1 {
+            font-size: 4em;
             margin-bottom: 0.2em;
             color: #a71d1d;
-            text-shadow: 3px 3px 6px rgba(0,0,0,0.7);
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
         }
-        
-        .main-content p {
-            font-size: 1.2em;
-            margin-bottom: 1em;
+
+        .welcome-screen p {
+            font-family: Arial, sans-serif;
+            font-size: 1.5em;
+            margin-bottom: 2em;
             color: #555;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
         }
-        
+
         #start-button {
             font-family: 'MedievalSharp', cursive;
             padding: 15px 30px;
@@ -102,54 +89,175 @@
             border-radius: 10px;
             background-color: #c62828;
             color: white;
-            text-decoration: none;
             transition: background-color 0.3s ease, color 0.3s ease;
-            margin-top: 1em;
         }
-
         #start-button:hover {
             background-color: #fff;
             color: #c62828;
+        }
+
+        /* Botones de navegación */
+        .nav-buttons {
+            padding: 20px 0;
+            display: none; /* Oculto inicialmente */
+            justify-content: center;
+            gap: 15px;
+        }
+        .nav-buttons.visible {
+            display: flex;
+        }
+        .nav-buttons a {
+            font-family: 'MedievalSharp', cursive;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 12px 20px;
+            border: 2px solid #a71d1d;
+            border-radius: 8px;
+            background-color: #c62828;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .nav-buttons a:hover {
+            background-color: #fff;
+            color: #c62828;
+        }
+
+        /* Estilos de los títulos principales del contenido */
+        h1.content-title {
+            font-family: 'MedievalSharp', cursive;
+            color: #a71d1d;
+            font-size: 3em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            margin-bottom: 0.5em;
+        }
+        
+        h2 {
+            font-family: 'MedievalSharp', cursive;
+            color: #4a4a4a;
+            font-size: 1.8em;
+            margin-top: 30px;
+        }
+        
+        p {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 10px auto;
+            line-height: 1.6;
+        }
+
+        /* Estilos de la galería */
+        #galeria-content .galeria-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            padding: 20px 0;
+        }
+
+        #galeria-content .galeria-container img {
+            width: 90%;
+            max-width: 600px;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Estilos de contacto */
+        #contacto-content .contact-info {
+            font-size: 1.2em;
+            margin: 20px 0;
+        }
+        #contacto-content .contact-info a {
+            font-family: Arial, sans-serif;
+            color: #a71d1d;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        #contacto-content .contact-info a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
     <audio id="audioPlayer" src="fondo_musical.mp3" loop></audio>
 
-    <div class="nav-buttons" id="navMenu" style="display:none;">
-        <a href="inicio_contenido.html" target="main-frame">Inicio</a>
-        <a href="galeria.html" target="main-frame">Galería de Fotos</a>
-        <a href="contacto.html" target="main-frame">Contacto</a>
-    </div>
-
-    <div id="welcomeScreen" class="main-content">
+    <div id="welcome-screen" class="welcome-screen">
         <h1>ETERNO VÍNCULO</h1>
         <p>Un legado de amor y memoria</p>
         <button id="start-button">Entrar</button>
     </div>
 
-    <iframe name="main-frame" id="main-frame" src="about:blank" class="content-frame" style="display:none;"></iframe>
+    <div id="main-site" style="display:none;">
+        <div class="nav-buttons" id="nav-buttons">
+            <a href="#" data-section="inicio">Inicio</a>
+            <a href="#" data-section="galeria">Galería de Fotos</a>
+            <a href="#" data-section="contacto">Contacto</a>
+        </div>
+
+        <div id="inicio-content" class="content-section">
+            <h1 class="content-title">Para todos los que me extrañan</h1>
+            <h2>Mi Historia</h2>
+            <p>Mi nombre es Miguel Humberto Yáñez Hermosilla. Nací el 4 de agosto de 1945, fruto del amor de mis padres, Héctor José Yáñez González y Elcira del Carmen Hermosilla González.</p>
+            <p>A lo largo de mi vida, me dediqué con gran pasión y maestría a mi oficio: ser maestro enfierrador. Para mí, no era solo un trabajo, era mi vocación. Mis alicates eran mi extensión, mi herramienta más preciada, y encontrar la perfección en el arte de hacer cadenas para pilares era una de mis grandes satisfacciones.</p>
+            <p>Fui un hombre que valoraba el trabajo arduo y el esfuerzo. Dediqué mi vida entera a mi labor y, por encima de todo, a mi familia, quienes siempre fueron mi mayor motivación.</p>
+            <p>No estén tristes por mi partida. Miren al cielo, y sepan que siempre estoy aquí, con ustedes.</p>
+            <p>Guarden en sus corazones nuestros recuerdos. Vivan sus vidas con alegría y amor, y sepan que nuestro vínculo es eterno y que nos volveremos a encontrar.</p>
+        </div>
+
+        <div id="galeria-content" class="content-section">
+            <h1 class="content-title">Galería de Recuerdos</h1>
+            <p>Un tesoro de momentos inolvidables.</p>
+            <div class="galeria-container">
+                <img src="1.jpeg" alt="Recuerdo 1">
+                <img src="2.jpeg" alt="Recuerdo 2">
+                <img src="3.jpeg" alt="Recuerdo 3">
+                <img src="4.jpeg" alt="Recuerdo 4">
+                <img src="5.jpeg" alt="Recuerdo 5">
+                <img src="6.jpeg" alt="Recuerdo 6">
+                <img src="7.jpeg" alt="Recuerdo 7">
+            </div>
+        </div>
+
+        <div id="contacto-content" class="content-section">
+            <h1 class="content-title">Eterno Vínculo</h1>
+            <p>Un servicio pensado en tus seres queridos que ya no están con nosotros, pero queremos mantener viva su historia.</p>
+            <h2>Contacto</h2>
+            <div class="contact-info">
+                <p>WhatsApp: <a href="https://wa.me/56949870134" target="_blank">+56949870134</a></p>
+                <p>Email: <a href="mailto:ingeniotecc@gmail.com">ingeniotecc@gmail.com</a></p>
+            </div>
+            <h2>Nuestros Valores</h2>
+            <p>Creemos que el amor no tiene fin. Hacemos de cada recuerdo un puente que une el pasado con el presente.</p>
+        </div>
+    </div>
 
     <script>
         const audio = document.getElementById('audioPlayer');
         const startButton = document.getElementById('start-button');
-        const welcomeScreen = document.getElementById('welcomeScreen');
-        const navMenu = document.getElementById('navMenu');
-        const iframe = document.getElementById('main-frame');
+        const welcomeScreen = document.getElementById('welcome-screen');
+        const mainSite = document.getElementById('main-site');
+        const navButtons = document.getElementById('nav-buttons');
 
         startButton.addEventListener('click', () => {
-            audio.play().then(() => {
-                welcomeScreen.style.display = 'none';
-                navMenu.style.display = 'block';
-                iframe.style.display = 'block';
-                iframe.src = 'inicio_contenido.html';
-            }).catch(error => {
-                console.log("El autoplay fue bloqueado, el usuario deberá interactuar con el reproductor.");
-                welcomeScreen.style.display = 'none';
-                navMenu.style.display = 'block';
-                iframe.style.display = 'block';
-                iframe.src = 'inicio_contenido.html';
+            audio.play().catch(error => {
+                console.log("Autoplay blocked, user must interact with the player.");
             });
+            welcomeScreen.classList.add('hidden');
+            mainSite.style.display = 'block';
+            navButtons.classList.add('visible');
+            document.getElementById('inicio-content').style.display = 'block';
+        });
+
+        navButtons.addEventListener('click', (e) => {
+            e.preventDefault();
+            const sectionId = e.target.getAttribute('data-section');
+            if (sectionId) {
+                document.querySelectorAll('.content-section').forEach(section => {
+                    section.style.display = 'none';
+                });
+                document.getElementById(sectionId + '-content').style.display = 'block';
+            }
         });
     </script>
 </body>
