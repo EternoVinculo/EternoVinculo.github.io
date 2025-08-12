@@ -240,35 +240,51 @@
     </div>
 
     <script>
-        const audio = document.getElementById('audioPlayer');
-        const startButton = document.getElementById('start-button');
-        const welcomeScreen = document.getElementById('welcome-screen');
-        const mainSite = document.getElementById('main-site');
-        const navButtons = document.getElementById('nav-buttons');
+    const audio = document.getElementById('audioPlayer');
+    const startButton = document.getElementById('start-button');
+    const welcomeScreen = document.getElementById('welcome-screen');
+    const mainSite = document.getElementById('main-site');
+    const navButtons = document.getElementById('nav-buttons');
 
-        startButton.addEventListener('click', () => {
-            audio.play().catch(error => {
+    startButton.addEventListener('click', () => {
+        audio.play().catch(error => {
+            console.log("Autoplay blocked, user must interact with the player.");
+        });
+        welcomeScreen.classList.add('hidden');
+        mainSite.style.display = 'block';
+        navButtons.classList.add('visible');
+        document.getElementById('inicio-content').style.display = 'block';
+    });
+
+    navButtons.addEventListener('click', (e) => {
+        e.preventDefault();
+        const sectionId = e.target.getAttribute('data-section');
+        if (sectionId) {
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.style.display = 'none';
+            });
+            document.getElementById(sectionId + '-content').style.display = 'block';
+        }
+    });
+
+    
+    const showVideoButton = document.getElementById('show-video-button');
+    const videoContent = document.getElementById('video-content');
+    const videoPlayer = document.getElementById('videoPlayer');
+
+    if (showVideoButton) { 
+        showVideoButton.addEventListener('click', () => {
+            videoContent.style.display = 'block'; 
+            videoPlayer.play().catch(error => {
                 console.log("Autoplay blocked, user must interact with the player.");
             });
-            welcomeScreen.classList.add('hidden');
-            mainSite.style.display = 'block';
-            navButtons.classList.add('visible');
-            document.getElementById('inicio-content').style.display = 'block';
+            showVideoButton.style.display = 'none'; 
         });
-
-        navButtons.addEventListener('click', (e) => {
-            e.preventDefault();
-            const sectionId = e.target.getAttribute('data-section');
-            if (sectionId) {
-                document.querySelectorAll('.content-section').forEach(section => {
-                    section.style.display = 'none';
-                });
-                document.getElementById(sectionId + '-content').style.display = 'block';
-            }
-        });
-    </script>
+    }
+</script>
 </body>
 </html>
+
 
 
 
