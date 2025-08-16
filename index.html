@@ -98,10 +98,11 @@
 
         /* Botones de navegación */
         .nav-buttons {
-            padding: 20px 0;
+            padding: 10px 0;
             display: none; /* Oculto inicialmente */
             justify-content: center;
-            gap: 15px;
+            gap: 10px;
+            flex-direction: row; /* Para que los botones estén en una línea */
         }
         .nav-buttons.visible {
             display: flex;
@@ -110,13 +111,14 @@
             font-family: 'MedievalSharp', cursive;
             text-decoration: none;
             font-weight: bold;
-            padding: 12px 20px;
+            padding: 8px 15px; /* Botones más pequeños */
             border: 2px solid #a71d1d;
             border-radius: 8px;
             background-color: #c62828;
             color: #fff;
             cursor: pointer;
             transition: background-color 0.3s ease, color 0.3s ease;
+            font-size: 0.9em; /* Fuente más pequeña */
         }
         .nav-buttons a:hover {
             background-color: #fff;
@@ -193,13 +195,6 @@
         <a href="#" data-section="inicio">Inicio</a>
         <a href="#" data-section="galeria">Galería de Fotos</a>
         <a href="#" data-section="contacto">Contacto</a>
-        <p>Guarden en sus corazones nuestros recuerdos. Vivan sus vidas con alegría y amor, y sepan que nuestro vínculo es eterno y que nos volveremos a encontrar.</p>
-        <div class="video-container" style="margin-top: 40px;">
-            <video controls style="max-width: 100%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-                <source src="video.mp4" type="video/mp4">
-                Tu navegador no soporta el elemento de video.
-            </video>
-        </div>
     </div>
 
     <div id="inicio-content" class="content-section">
@@ -223,6 +218,12 @@
                 <img src="5.jpeg" alt="Recuerdo 5">
                 <img src="6.jpeg" alt="Recuerdo 6">
                 <img src="7.jpeg" alt="Recuerdo 7">
+                <div class="video-container" style="margin-top: 40px;">
+                    <video controls style="max-width: 100%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                        <source src="video.mp4" type="video/mp4">
+                        Tu navegador no soporta el elemento de video.
+                    </video>
+                </div>
             </div>
         </div>
 
@@ -284,9 +285,3 @@
 </script>
 </body>
 </html>
-
-
-
-
-
-
