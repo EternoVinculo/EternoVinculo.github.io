@@ -4,11 +4,139 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eterno Vínculo - Miguel Yáñez</title>
+
+    <!-- Fuentes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet">
+    
     <style>
-        /* Agrega aquí los estilos de tu archivo inicio_contenido.html, como los de h1, h2 y p */
+        /* Estilos generales y del fondo */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+            margin: 0;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://placehold.co/1200x800/E8E8E8/4a4a4a?text=Fondo');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.2;
+            z-index: -1;
+        }
+
+        /* Animaciones */
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        /* Contenedor principal de la página */
+        .content-section {
+            display: none; /* Oculta todas las secciones por defecto */
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.85);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1s ease-in-out;
+            width: 95%; /* Asegura que no se desborde en pantallas pequeñas */
+            margin-top: 20px;
+        }
+
+        /* Pantalla de bienvenida (visible al inicio) */
+        #welcome-screen {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            min-height: 100vh;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            padding: 20px;
+        }
+        #welcome-screen.hidden {
+            display: none;
+        }
+
+        .welcome-screen h1 {
+            font-family: 'MedievalSharp', cursive;
+            font-size: 4em;
+            margin-bottom: 0.2em;
+            color: #a71d1d;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+        }
+
+        .welcome-screen p {
+            font-family: Arial, sans-serif;
+            font-size: 1.5em;
+            margin-bottom: 2em;
+            color: #555;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        #start-button {
+            font-family: 'MedievalSharp', cursive;
+            padding: 15px 30px;
+            font-size: 1.5em;
+            cursor: pointer;
+            border: 2px solid #a71d1d;
+            border-radius: 10px;
+            background-color: #c62828;
+            color: white;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        #start-button:hover {
+            background-color: #fff;
+            color: #c62828;
+        }
+
+        /* Botones de navegación */
+        .nav-buttons {
+            padding: 10px 0;
+            display: none; /* Oculto inicialmente */
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+        .nav-buttons.visible {
+            display: flex;
+        }
+        .nav-buttons a {
+            font-family: 'MedievalSharp', cursive;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 8px 15px;
+            border: 2px solid #a71d1d;
+            border-radius: 8px;
+            background-color: #c62828;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            font-size: 0.9em;
+        }
+        .nav-buttons a:hover {
+            background-color: #fff;
+            color: #c62828;
+        }
+
+        /* Estilos de los títulos principales del contenido */
         h1.content-title {
             font-family: 'MedievalSharp', cursive;
             color: #a71d1d;
@@ -16,36 +144,53 @@
             text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
             margin-bottom: 0.5em;
         }
+        
         h2 {
             font-family: 'MedievalSharp', cursive;
             color: #4a4a4a;
             font-size: 1.8em;
             margin-top: 30px;
         }
+        
         p {
             font-family: Arial, sans-serif;
             max-width: 800px;
             margin: 10px auto;
             line-height: 1.6;
         }
+
+        /* === CÓDIGO PARA RESPONSIVIDAD (PANTALLAS PEQUEÑAS) === */
+        @media (max-width: 768px) {
+            .nav-buttons {
+                flex-direction: column;
+            }
+            .nav-buttons a {
+                font-size: 1.2em;
+                padding: 12px 20px;
+                margin-bottom: 10px;
+            }
+        }
     </style>
 </head>
 <body>
-    <audio id="audioPlayer" src="fondo_musical.mp3" loop></audio>
-    <div id="welcome-screen" class="welcome-screen">
-        <h1>ETERNO VÍNCULO</h1>
-        <p>Un legado de amor y memoria</p>
-        <button id="start-button">Entrar</button>
+    <audio id="audioPlayer" src="https://www.w3schools.com/html/horse.mp3" loop></audio>
+
+    <div id="welcome-screen">
+        <div style="text-align: center;">
+            <h1 style="font-size: 4em; margin-bottom: 0.2em; color: #a71d1d; text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);">ETERNO VÍNCULO</h1>
+            <p style="font-family: Arial, sans-serif; font-size: 1.5em; margin-bottom: 2em; color: #555; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);">Un legado de amor y memoria</p>
+            <button id="start-button">Entrar</button>
+        </div>
     </div>
 
     <div id="main-site" style="display:none;">
-        <div class="nav-buttons" id="nav-buttons">
-            <a href="#" data-section="inicio">Inicio</a>
-            <a href="#" data-section="galeria">Galería de Fotos</a>
-            <a href="#" data-section="contacto">Contacto</a>
+        <div class="nav-buttons visible" id="nav-buttons">
+            <a href="index.html">Inicio</a>
+            <a href="galeria.html">Galería de Fotos</a>
+            <a href="contacto.html">Contacto y Planes</a>
         </div>
-        
-        <div id="inicio-content" class="content-section">
+
+        <div id="inicio-content" class="content-section" style="display:block;">
             <h1 class="content-title">Para todos los que me extrañan</h1>
             <h2>Mi Historia</h2>
             <p>Mi nombre es Miguel Humberto Yáñez Hermosilla. Nací el 4 de agosto de 1945, fruto del amor de mis padres, Héctor José Yáñez González y Elcira del Carmen Hermosilla González.</p>
@@ -54,15 +199,21 @@
             <p>No estén tristes por mi partida. Miren al cielo, y sepan que siempre estoy aquí, con ustedes.</p>
             <p>Guarden en sus corazones nuestros recuerdos. Vivan sus vidas con alegría y amor, y sepan que nuestro vínculo es eterno y que nos volveremos a encontrar.</p>
         </div>
-
-        <div id="galeria-content" class="content-section" style="display:none;">
-            </div>
-
-        <div id="contacto-content" class="content-section" style="display:none;">
-            </div>
     </div>
+
     <script>
-        // Tu script de JavaScript para manejar los botones y la música
+        const audio = document.getElementById('audioPlayer');
+        const startButton = document.getElementById('start-button');
+        const welcomeScreen = document.getElementById('welcome-screen');
+        const mainSite = document.getElementById('main-site');
+
+        startButton.addEventListener('click', () => {
+            audio.play().catch(error => {
+                console.log("Autoplay blocked, user must interact with the player.");
+            });
+            welcomeScreen.style.display = 'none';
+            mainSite.style.display = 'block';
+        });
     </script>
 </body>
 </html>
