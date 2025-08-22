@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eterno Vínculo - Felipe Camiroaga</title>
 
-    <!-- Fuentes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet">
@@ -185,20 +184,14 @@
 
     <div id="main-site" style="display:none;">
         <div class="nav-buttons visible" id="nav-buttons">
-            <a href="index.html">Inicio</a>
-            <a href="galeria.html">Galería de Fotos</a>
-            <a href="contacto.html">Contacto y Planes</a>
+            <a href="inicio_contenido.html" class="nav-link">Inicio</a>
+            <a href="galeria.html" class="nav-link">Galería de Fotos</a>
+            <a href="contacto.html" class="nav-link">Contacto y Planes</a>
         </div>
+        
+        <div id="content-container">
+            </div>
 
-        <div id="inicio-content" class="content-section" style="display:block;">
-            <h1 class="content-title">Para todos los que me extrañan</h1>
-            <h2>Mi Historia</h2>
-            <p>Felipe Camiroaga (1966–2011) fue un hombre que conquistó a Chile con su sonrisa franca y su espíritu libre. No solo fue un animador de televisión, sino un compañero cercano que cada mañana acompañaba a las familias, transmitiendo alegría, esperanza y cariño sincero.</p>
-            <p>“El halcón de Chicureo” voló alto en la televisión, pero también en el corazón de quienes lo conocieron y siguieron su carrera. Su partida en el accidente de Juan Fernández en 2011 dejó un vacío profundo, pero también la certeza de que su luz permanece intacta en la memoria colectiva.</p>
-            <p>Felipe no fue solo un rostro en pantalla: fue un amigo, un símbolo de cercanía y humanidad, alguien que aún hoy inspira con su recuerdo.</p>
-            <p><em>"No me recuerden con tristeza… recuérdenme con una sonrisa, porque ahí es donde siempre quise estar, junto a ustedes."</em></p>
-
-        </div>
     </div>
 
     <script>
@@ -206,7 +199,25 @@
         const startButton = document.getElementById('start-button');
         const welcomeScreen = document.getElementById('welcome-screen');
         const mainSite = document.getElementById('main-site');
+        const contentContainer = document.getElementById('content-container');
+        const navButtons = document.getElementById('nav-buttons');
 
+        // Función para cargar el contenido de una página
+        async function loadContent(url) {
+            try {
+                const response = await fetch(url);
+                const html = await response.text();
+                contentContainer.innerHTML = html;
+            } catch (error) {
+                console.error('Error al cargar la página:', error);
+                contentContainer.innerHTML = `<p>Error al cargar el contenido.</p>`;
+            }
+        }
+
+        // Cargar el contenido de inicio al principio
+        loadContent('inicio_contenido.html');
+
+        // Manejar el clic del botón de "Entrar"
         startButton.addEventListener('click', () => {
             audio.play().catch(error => {
                 console.log("Autoplay blocked, user must interact with the player.");
@@ -214,11 +225,15 @@
             welcomeScreen.style.display = 'none';
             mainSite.style.display = 'block';
         });
+
+        // Manejar los clics en los enlaces de navegación
+        navButtons.addEventListener('click', (event) => {
+            if (event.target.tagName === 'A') {
+                event.preventDefault(); // Evita la recarga de la página
+                const pageToLoad = event.target.getAttribute('href');
+                loadContent(pageToLoad);
+            }
+        });
     </script>
 </body>
 </html>
-
-
-
-
-
