@@ -158,6 +158,34 @@
             line-height: 1.6;
         }
 
+        /* Estilos adicionales para el video y la galería */
+        .video-container {
+            width: 100%;
+            max-width: 800px;
+            margin: 20px auto;
+        }
+
+        .video-container video {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        
+        .galeria-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .galeria-container img {
+            width: 90%;
+            max-width: 600px;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
         /* === CÓDIGO PARA RESPONSIVIDAD (PANTALLAS PEQUEÑAS) === */
         @media (max-width: 768px) {
             .nav-buttons {
@@ -207,7 +235,31 @@
             try {
                 const response = await fetch(url);
                 const html = await response.text();
-                contentContainer.innerHTML = html;
+                
+                const tempDiv = document.createElement('div');
+                tempDiv.innerHTML = html;
+                const content = tempDiv.querySelector('.content-section');
+                if (content) {
+                    contentContainer.innerHTML = content.innerHTML;
+                } else {
+                    contentContainer.innerHTML = html;
+                }
+
+                // Si la página cargada es la galería, añade el evento al video
+                if (url === 'galeria.html') {
+                    const video = document.getElementById('myVideo');
+                    if (video) {
+                        video.addEventListener('play', () => {
+                            audio.pause();
+                        });
+                        video.addEventListener('pause', () => {
+                            audio.play(); 
+                        });
+                        video.addEventListener('ended', () => {
+                            audio.play(); 
+                        });
+                    }
+                }
             } catch (error) {
                 console.error('Error al cargar la página:', error);
                 contentContainer.innerHTML = `<p>Error al cargar el contenido.</p>`;
@@ -229,7 +281,7 @@
         // Manejar los clics en los enlaces de navegación
         navButtons.addEventListener('click', (event) => {
             if (event.target.tagName === 'A') {
-                event.preventDefault(); // Evita la recarga de la página
+                event.preventDefault(); 
                 const pageToLoad = event.target.getAttribute('href');
                 loadContent(pageToLoad);
             }
