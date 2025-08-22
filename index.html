@@ -105,18 +105,16 @@
             color: #c62828;
         }
 
-        /* Botones de navegación */
+        /* Estilos de los botones de navegación */
         .nav-buttons {
-            padding: 10px 0;
-            display: none; /* Oculto inicialmente */
+            display: flex;
             justify-content: center;
             gap: 10px;
+            padding: 10px 0;
             flex-wrap: wrap;
             width: 100%;
         }
-        .nav-buttons.visible {
-            display: flex;
-        }
+
         .nav-buttons a {
             font-family: 'MedievalSharp', cursive;
             text-decoration: none;
@@ -130,6 +128,7 @@
             transition: background-color 0.3s ease, color 0.3s ease;
             font-size: 0.9em;
         }
+
         .nav-buttons a:hover {
             background-color: #fff;
             color: #c62828;
