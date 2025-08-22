@@ -244,25 +244,34 @@
                 } else {
                     contentContainer.innerHTML = html;
                 }
-
-                // Si la página cargada es la galería, añade el evento al video
+                
+                // Si la página cargada es la galería, se llama a una nueva función para configurar el video.
                 if (url === 'galeria.html') {
-                    const video = document.getElementById('myVideo');
-                    if (video) {
-                        video.addEventListener('play', () => {
-                            audio.pause();
-                        });
-                        video.addEventListener('pause', () => {
-                            audio.play(); 
-                        });
-                        video.addEventListener('ended', () => {
-                            audio.play(); 
-                        });
-                    }
+                    // Espera un momento para asegurar que el DOM se actualice.
+                    setTimeout(setupVideoEvents, 100);
                 }
+
             } catch (error) {
                 console.error('Error al cargar la página:', error);
                 contentContainer.innerHTML = `<p>Error al cargar el contenido.</p>`;
+            }
+        }
+
+        // Nueva función para encontrar el video y añadir los eventos.
+        function setupVideoEvents() {
+            const video = document.getElementById('myVideo');
+            if (video) {
+                video.addEventListener('play', () => {
+                    audio.pause();
+                });
+                video.addEventListener('pause', () => {
+                    audio.play(); 
+                });
+                video.addEventListener('ended', () => {
+                    audio.play(); 
+                });
+            } else {
+                console.error('Video con ID "myVideo" no encontrado.');
             }
         }
 
