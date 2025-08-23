@@ -68,6 +68,7 @@
     </style>
 </head>
 <body>
+    <audio id="musicaFondo" src="fondo_musical.mp3" preload="auto"></audio>
     <div class="container">
         <h1>Eterno Vínculo</h1>
         <h2>Un puente al corazón de quienes amamos.</h2>
@@ -75,7 +76,23 @@
         <p>En Eterno Vínculo, sabemos que los recuerdos más preciosos no se desvanecen. Son el eco de una risa, la calidez de un abrazo y la historia que vive en nuestros corazones. Nuestro propósito es crear un puente tangible que te conecte con la memoria de esas personas o mascotas que tanto significaron para ti.</p>
         <p>A través de un código QR único y resistente, que puedes colocar en una lápida, un llavero o en cualquier lugar especial, te ofrecemos la oportunidad de abrir un cofre de tesoros. Con solo escanearlo, podrás revivir momentos inolvidables a través de fotos, videos y anécdotas que mantienen sus historias vivas.</p>
         <p>Eterno Vínculo es más que un simple objeto; es una promesa. La promesa de que el amor perdura, de que las historias no se olvidan y de que cada recuerdo es un hilo dorado en el gran tapiz de nuestras vidas. Es nuestra forma de honrar a quienes ya no están, manteniendo su legado accesible, vivo y lleno de amor para ti y para las generaciones futuras.</p>
-        <a href="felipe_camiroaga.html" class="btn-entrar">Entrar</a>
+        <a href="felipe_camiroaga.html" class="btn-entrar" id="entrarBtn">Entrar</a>
     </div>
+
+    <script>
+        const entrarBtn = document.getElementById('entrarBtn');
+        const musicaFondo = document.getElementById('musicaFondo');
+
+        entrarBtn.addEventListener('click', function(event) {
+            event.preventDefault(); // Evita la navegación inmediata
+            musicaFondo.play().then(() => {
+                window.location.href = entrarBtn.href; // Redirige a la página una vez que la música comienza a reproducirse
+            }).catch(error => {
+                // Maneja errores si el navegador bloquea la reproducción automática
+                console.log("La reproducción de música fue bloqueada. Redirigiendo de todas formas.");
+                window.location.href = entrarBtn.href;
+            });
+        });
+    </script>
 </body>
 </html>
