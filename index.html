@@ -3,20 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eterno Vínculo - Felipe Camiroaga</title>
+    <title>Eterno Vínculo - Un puente a tus recuerdos</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     
     <style>
-        /* Estilos generales y del fondo */
+        /* Estilos generales del fondo y página */
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Lato', sans-serif;
             text-align: center;
             background-color: #f0f0f0;
             margin: 0;
-            color: #333;
+            color: #4a4a4a;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -44,21 +45,7 @@
             100% { opacity: 1; }
         }
 
-        /* Contenedor principal de la página */
-        .content-section {
-            display: none; /* Oculta todas las secciones por defecto */
-            max-width: 900px;
-            margin: 0 auto;
-            background-color: rgba(255, 255, 255, 0.85);
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-            animation: fadeIn 1s ease-in-out;
-            width: 95%; /* Asegura que no se desborde en pantallas pequeñas */
-            margin-top: 20px;
-        }
-
-        /* Pantalla de bienvenida (visible al inicio) */
+        /* --- Estilos de la PANTALLA DE BIENVENIDA --- */
         #welcome-screen {
             display: flex;
             flex-direction: column;
@@ -66,43 +53,77 @@
             align-items: center;
             width: 100%;
             min-height: 100vh;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
             padding: 20px;
         }
-        #welcome-screen.hidden {
-            display: none;
-        }
 
-        .welcome-screen h1 {
-            font-family: 'MedievalSharp', cursive;
-            font-size: 4em;
-            margin-bottom: 0.2em;
-            color: #a71d1d;
-            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
-        }
-
-        .welcome-screen p {
-            font-family: Arial, sans-serif;
-            font-size: 1.5em;
-            margin-bottom: 2em;
-            color: #555;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-        }
-
-        #start-button {
-            font-family: 'MedievalSharp', cursive;
-            padding: 15px 30px;
-            font-size: 1.5em;
-            cursor: pointer;
-            border: 2px solid #a71d1d;
+        .welcome-container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #ffffff;
             border-radius: 10px;
-            background-color: #c62828;
-            color: white;
-            transition: background-color 0.3s ease, color 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1s ease-in-out;
         }
-        #start-button:hover {
-            background-color: #fff;
-            color: #c62828;
+        
+        .welcome-container h1 {
+            font-family: 'Playfair Display', serif;
+            color: #6a0578;
+            font-size: 3em;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+            margin-bottom: 0.5em;
+        }
+
+        .welcome-container h2 {
+            font-family: 'Playfair Display', serif;
+            color: #6a0578;
+            font-size: 1.5em;
+            margin-top: -10px;
+            margin-bottom: 30px;
+        }
+
+        .welcome-container p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .btn-entrar {
+            background-color: #6a0578;
+            color: #ffffff;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            font-family: 'Lato', sans-serif;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-entrar:hover {
+            background-color: #4a0352;
+        }
+
+        /* --- Estilos del SITIO PRINCIPAL (después de "Entrar") --- */
+        #main-site {
+            display: none;
+            width: 100%;
+        }
+
+        /* Contenedor principal del contenido */
+        .content-section {
+            display: block;
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.85);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1s ease-in-out;
+            width: 95%;
+            margin-top: 20px;
         }
 
         /* Estilos de los botones de navegación */
@@ -113,6 +134,7 @@
             padding: 10px 0;
             flex-wrap: wrap;
             width: 100%;
+            margin-top: 20px;
         }
 
         .nav-buttons a {
@@ -132,29 +154,6 @@
         .nav-buttons a:hover {
             background-color: #fff;
             color: #c62828;
-        }
-
-        /* Estilos de los títulos principales del contenido */
-        h1.content-title {
-            font-family: 'MedievalSharp', cursive;
-            color: #a71d1d;
-            font-size: 3em;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-            margin-bottom: 0.5em;
-        }
-        
-        h2 {
-            font-family: 'MedievalSharp', cursive;
-            color: #4a4a4a;
-            font-size: 1.8em;
-            margin-top: 30px;
-        }
-        
-        p {
-            font-family: Arial, sans-serif;
-            max-width: 800px;
-            margin: 10px auto;
-            line-height: 1.6;
         }
 
         /* Estilos adicionales para el video y la galería */
@@ -202,15 +201,18 @@
     <audio id="audioPlayer" src="fondo_musical.mp3" loop></audio>
 
     <div id="welcome-screen">
-        <div style="text-align: center;">
-            <h1 style="font-size: 4em; margin-bottom: 0.2em; color: #a71d1d; text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);">ETERNO VÍNCULO</h1>
-            <p style="font-family: Arial, sans-serif; font-size: 1.5em; margin-bottom: 2em; color: #555; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);">Un legado de amor y memoria</p>
-            <button id="start-button">Entrar</button>
+        <div class="welcome-container">
+            <h1>Eterno Vínculo</h1>
+            <h2>Un puente al corazón de quienes amamos.</h2>
+            <p>En Eterno Vínculo, sabemos que los recuerdos más preciosos no se desvanecen. Son el eco de una risa, la calidez de un abrazo y la historia que vive en nuestros corazones. Nuestro propósito es crear un puente tangible que te conecte con la memoria de esas personas o mascotas que tanto significaron para ti.</p>
+            <p>A través de un código QR único y resistente, que puedes colocar en una lápida, un llavero o en cualquier lugar especial, te ofrecemos la oportunidad de abrir un cofre de tesoros. Con solo escanearlo, podrás revivir momentos inolvidables a través de fotos, videos y anécdotas que mantienen sus historias vivas.</p>
+            <p>Eterno Vínculo es más que un simple objeto; es una promesa. La promesa de que el amor perdura, de que las historias no se olvidan y de que cada recuerdo es un hilo dorado en el gran tapiz de nuestras vidas. Es nuestra forma de honrar a quienes ya no están, manteniendo su legado accesible, vivo y lleno de amor para ti y para las generaciones futuras.</p>
+            <a href="#" class="btn-entrar" id="startButton">Entrar</a>
         </div>
     </div>
 
-    <div id="main-site" style="display:none;">
-        <div class="nav-buttons visible" id="nav-buttons">
+    <div id="main-site">
+        <div class="nav-buttons" id="nav-buttons">
             <a href="inicio_contenido.html" class="nav-link">Inicio</a>
             <a href="galeria.html" class="nav-link">Galería de Fotos</a>
             <a href="contacto.html" class="nav-link">Contacto y Planes</a>
@@ -218,12 +220,11 @@
         
         <div id="content-container">
             </div>
-
     </div>
 
     <script>
         const audio = document.getElementById('audioPlayer');
-        const startButton = document.getElementById('start-button');
+        const startButton = document.getElementById('startButton');
         const welcomeScreen = document.getElementById('welcome-screen');
         const mainSite = document.getElementById('main-site');
         const contentContainer = document.getElementById('content-container');
@@ -246,7 +247,6 @@
                 
                 // Si la página cargada es la galería, se llama a una nueva función para configurar el video.
                 if (url === 'galeria.html') {
-                    // Espera un momento para asegurar que el DOM se actualice.
                     setTimeout(setupVideoEvents, 100);
                 }
 
@@ -274,16 +274,15 @@
             }
         }
 
-        // Cargar el contenido de inicio al principio
-        loadContent('inicio_contenido.html');
-
         // Manejar el clic del botón de "Entrar"
-        startButton.addEventListener('click', () => {
+        startButton.addEventListener('click', (e) => {
+            e.preventDefault();
             audio.play().catch(error => {
                 console.log("Autoplay blocked, user must interact with the player.");
             });
             welcomeScreen.style.display = 'none';
             mainSite.style.display = 'block';
+            loadContent('inicio_contenido.html');
         });
 
         // Manejar los clics en los enlaces de navegación
