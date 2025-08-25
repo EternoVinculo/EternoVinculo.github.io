@@ -6,50 +6,95 @@
     <title>Eterno Vínculo - Un puente a tus recuerdos</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <style>
+        /* Estilos generales del fondo y página */
         body {
             font-family: 'Lato', sans-serif;
-            text-align: center;
-            padding: 20px;
-            color: #4a4a4a;
-            line-height: 1.8;
-            background-color: #f8f8f8;
             margin: 0;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
         }
 
-        .container {
-            max-width: 800px;
-            margin: 40px auto;
+        /* Contenedor principal para la pantalla de bienvenida */
+        #welcome-screen {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            padding-top: 90px;
+        }
+
+        /* Contenedor para la imagen de fondo */
+        .hero-image-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 140%;
+            z-index: -1;
+            background-color: black;
+        }
+        .hero-image {
+            width: 100%;
+            height: 120%;
+            object-fit: contain;
+            object-position: bottom center;
+        }
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        /* Contenido de texto centrado */
+        .welcome-container {
+            text-align: center;
+            max-width: 1000px;
             padding: 20px;
-            background-color: #ffffff;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1s ease-in-out;
+            z-index: 1;
         }
 
-        h1 {
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        /* Estilos de los títulos y párrafos */
+        .welcome-container h1 {
             font-family: 'Playfair Display', serif;
-            color: #6a0578;
+            color: #ffffff;
             font-size: 3em;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
             margin-bottom: 0.5em;
         }
-        
-        h2 {
+        .welcome-container h2 {
             font-family: 'Playfair Display', serif;
-            color: #6a0578;
+            color: #ffffff;
             font-size: 1.5em;
             margin-top: -10px;
             margin-bottom: 30px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
         }
-
-        p {
+        .welcome-container p {
             font-size: 1.2em;
             margin-bottom: 20px;
+            line-height: 1.8;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
         }
-        
         .btn-entrar {
-            background-color: #6a0578;
+            background-color: rgba(106, 5, 120, 0.7);
             color: #ffffff;
             border: none;
             padding: 15px 30px;
@@ -61,20 +106,36 @@
             text-decoration: none;
             display: inline-block;
         }
-
         .btn-entrar:hover {
-            background-color: #4a0352;
+            background-color: rgba(74, 3, 82, 0.9);
         }
+        
+        .content-section {
+            background-color: #ffffff;
+            color: #4a4a4a;
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+        
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Eterno Vínculo</h1>
-        <h2>Un puente al corazón de quienes amamos.</h2>
-        <p>En Eterno Vínculo, sabemos que los recuerdos más preciosos no se desvanecen. Son el eco de una risa, la calidez de un abrazo y la historia que vive en nuestros corazones. Nuestro propósito es crear un puente tangible que te conecte con la memoria de esas personas o mascotas que tanto significaron para ti.</p>
-        <p>A través de un código QR único y resistente, que puedes colocar en una lápida, un llavero o en cualquier lugar especial, te ofrecemos la oportunidad de abrir un cofre de tesoros. Con solo escanearlo, podrás revivir momentos inolvidables a través de fotos, videos y anécdotas que mantienen sus historias vivas.</p>
-        <p>Eterno Vínculo es más que un simple objeto; es una promesa. La promesa de que el amor perdura, de que las historias no se olvidan y de que cada recuerdo es un hilo dorado en el gran tapiz de nuestras vidas. Es nuestra forma de honrar a quienes ya no están, manteniendo su legado accesible, vivo y lleno de amor para ti y para las generaciones futuras.</p>
-        <a href="#" class="btn-entrar">Entrar</a>
+    <div id="welcome-screen">
+        <div class="hero-image-container">
+            <img src="imagen_principal.jpeg" alt="Árbol de la vida de Eterno Vínculo" class="hero-image">
+            <div class="overlay"></div>
+        </div>
+        <div class="welcome-container">
+            <h1>Eterno Vínculo</h1>
+            <h2>Un puente al corazón de quienes amamos.</h2>
+            <p>En Eterno Vínculo, sabemos que los recuerdos más preciosos no se desvanecen. Son el eco de una risa, la calidez de un abrazo y la historia que vive en nuestros corazones. Nuestro propósito es crear un puente tangible que te conecte con la memoria de esas personas o mascotas que tanto significaron para ti.</p>
+            <p>A través de un código QR único y resistente, que puedes colocar en una lápida, un llavero o en cualquier lugar especial, te ofrecemos la oportunidad de abrir un cofre de tesoros. Con solo escanearlo, podrás revivir momentos inolvidables a través de fotos, videos y anécdotas que mantienen sus historias vivas.</p>
+            <p>Eterno Vínculo es más que un simple objeto; es una promesa. La promesa de que el amor perdura, de que las historias no se olvidan y de que cada recuerdo es un hilo dorado en el gran tapiz de nuestras vidas. Es nuestra forma de honrar a quienes ya no están, manteniendo su legado accesible, vivo y lleno de amor para ti y para las generaciones futuras.</p>
+            <a href="#" class="btn-entrar">Entrar</a>
+        </div>
     </div>
 </body>
 </html>
