@@ -2,246 +2,81 @@
 <html lang="es">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contacto y Planes - Eterno Vínculo</title>
-
-  <!-- Fuentes -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet">
-
-  <style>
-    /* ===== Estilos generales ===== */
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      padding: 20px;
-      color: #333;
-      line-height: 1.6;
-      background-color: #f0f0f0;
-      margin: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-height: 100vh;
-    }
-
-    /* ===== Títulos ===== */
-    h1 {
-      font-family: 'MedievalSharp', cursive;
-      color: #a71d1d;
-      font-size: 2.5em;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-      margin-bottom: 0.5em;
-    }
-
-    h2 {
-      font-family: 'MedievalSharp', cursive;
-      color: #4a4a4a;
-      font-size: 1.8em;
-      margin-top: 30px;
-    }
-
-    p {
-      max-width: 600px;
-      margin: 10px auto;
-    }
-
-    /* ===== Sección de contacto ===== */
-    .contact-info {
-      font-size: 1.2em;
-      margin: 20px 0;
-    }
-
-    .contact-info a {
-      font-family: Arial, sans-serif;
-      color: #a71d1d;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    .contact-info a:hover {
-      text-decoration: underline;
-    }
-
-    /* ===== Contenedor de planes ===== */
-    .plans-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-      margin-top: 40px;
-      max-width: 1200px;
-    }
-
-    /* ===== Estilos de cada plan ===== */
-    .plan-card {
-      background-color: rgba(255, 255, 255, 0.9);
-      border: 2px solid #c62828;
-      border-radius: 12px;
-      padding: 20px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-      max-width: 280px;
-      width: 100%;
-      transition: transform 0.3s ease;
-      box-sizing: border-box;
-    }
-
-    .plan-card:hover {
-      transform: translateY(-5px);
-    }
-
-    .plan-card h3 {
-      font-family: 'MedievalSharp', cursive;
-      color: #c62828;
-      font-size: 1.8em;
-      margin-bottom: 10px;
-      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
-    }
-
-    .plan-card .price {
-      font-family: 'MedievalSharp', cursive;
-      font-size: 2em;
-      color: #4a4a4a;
-      margin-bottom: 10px;
-    }
-
-    .plan-card .plan-duration {
-      font-family: 'MedievalSharp', cursive;
-      font-size: 1em;
-      color: #4a4a4a;
-      margin-bottom: 10px;
-      font-weight: bold;
-    }
-
-    .plan-card ul {
-      list-style: none;
-      padding: 0;
-      text-align: left;
-      margin-bottom: 20px;
-    }
-
-    .plan-card ul li {
-      font-family: Arial, sans-serif;
-      font-size: 0.9em;
-      margin-bottom: 8px;
-      padding-left: 20px;
-      position: relative;
-    }
-
-    .plan-card ul li::before {
-      content: "✓";
-      color: #a71d1d;
-      font-weight: bold;
-      position: absolute;
-      left: 0;
-    }
-
-    /* ===== Botón de WhatsApp ===== */
-    .whatsapp-button {
-      display: inline-block;
-      font-family: 'MedievalSharp', cursive;
-      padding: 15px 30px;
-      font-size: 1.2em;
-      text-decoration: none;
-      color: white;
-      background-color: #25D366;
-      border-radius: 50px;
-      transition: background-color 0.3s ease, transform 0.2s ease;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-
-    .whatsapp-button:hover {
-      background-color: #128C7E;
-      transform: scale(1.05);
-    }
-
-    /* ===== Responsive ===== */
-    @media (max-width: 600px) {
-      .plans-container {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .plan-card {
-        max-width: 90%;
-      }
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contacto y Planes - Eterno Vínculo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-  <h1>Eterno Vínculo</h1>
-  <p>Un servicio pensado en tus seres queridos que ya no están con nosotros, pero queremos mantener viva su historia.</p>
+  <div class="content-section">
+    <h1>Eterno Vínculo</h1>
+    <p>Un servicio pensado en tus seres queridos que ya no están con nosotros, pero queremos mantener viva su historia.</p>
 
-  <!-- Contacto -->
-  <h2>Contacto</h2>
-  <div class="contact-info">
-    <p>WhatsApp: <a href="https://wa.me/56946975652" target="_blank">+56946975652</a></p>
-    <p>Email: <a href="mailto:ingeniotecc@gmail.com">ingeniotecc@gmail.com</a></p>
+ 
+
+    <h2>Nuestros Planes</h2>
+    <p>Elige el plan que mejor se adapte a tus necesidades para crear un recuerdo inolvidable.</p>
+
+    <div class="plans-container">
+      <div class="plan-card">
+        <h3>Plan de Recuerdo</h3>
+        <p class="plan-duration">Duración: 2 meses</p>
+        <p class="price">$20.000</p>
+        <ul>
+          <li>10 imágenes seleccionadas</li>
+          <li>1 video de hasta 30 seg.</li>
+          <li>1 reseña biográfica</li>
+          <li>Acceso a través de código QR</li>
+        </ul>
+        <a href="https://wa.me/56946975652text=Hola,%20me%20interesa%20el%20Plan%20de%20Recuerdo.%20%C2%BFMe%20puedes%20dar%20m%C3%A1s%20informaci%C3%B3n?" class="whatsapp-button" target="_blank">¡Me interesa!</a>
+      </div>
+
+      <div class="plan-card">
+        <h3>Plan de Recuerdo</h3>
+        <p class="plan-duration">Duración: 6 meses</p>
+        <p class="price">$40.000</p>
+        <ul>
+          <li>10 imágenes seleccionadas</li>
+          <li>1 video de hasta 30 seg.</li>
+          <li>1 reseña biográfica</li>
+          <li>Acceso a través de código QR</li>
+        </ul>
+        <a href="https://wa.me/56946975652?text=Hola,%20me%20interesa%20el%20Plan%20de%20Recuerdo%20de%206%20meses.%20%C2%BFMe%20puedes%20dar%20m%C3%A1s%20informaci%C3%B3n?" class="whatsapp-button" target="_blank">¡Me interesa!</a>
+      </div>
+
+      <div class="plan-card">
+        <h3>Plan de Recuerdo</h3>
+        <p class="plan-duration">Duración: 1 año</p>
+        <p class="price">$60.000</p>
+        <ul>
+          <li>10 imágenes seleccionadas</li>
+          <li>1 video de hasta 30 seg.</li>
+          <li>1 reseña biográfica</li>
+          <li>Acceso a través de código QR</li>
+        </ul>
+        <a href="https://wa.me/56946975652?text=Hola,%20me%20interesa%20el%20Plan%20de%20Recuerdo%20de%201%20a%C3%B1o.%20%C2%BFMe%20puedes%20dar%20m%C3%A1s%20informaci%C3%B3n?" class="whatsapp-button" target="_blank">¡Me interesa!</a>
+      </div>
+
+      <div class="plan-card">
+        <h3>Plan de Recuerdo</h3>
+        <p class="plan-duration">Duración: Eterno</p>
+        <p class="price">$80.000</p>
+        <ul>
+          <li>10 imágenes seleccionadas</li>
+          <li>1 video de hasta 30 seg.</li>
+          <li>1 reseña biográfica</li>
+          <li>Acceso a través de código QR</li>
+        </ul>
+        <a href="https://wa.me/56946975652?text=Hola,%20me%20interesa%20el%20Plan%20Eterno.%20%C2%BFMe%20puedes%20dar%20m%C3%A1s%20informaci%C3%B3n?" class="whatsapp-button" target="_blank">¡Me interesa!</a>
+      </div>
+    </div>
+
+    <h2>Nuestros Valores</h2>
+    <p>Creemos que el amor no tiene fin. Hacemos de cada recuerdo un puente que une el pasado con el presente.</p>
   </div>
-
-  <!-- Planes -->
-  <h2>Nuestros Planes</h2>
-  <p>Elige el plan que mejor se adapte a tus necesidades para crear un recuerdo inolvidable.</p>
-
-  <div class="plans-container">
-    <div class="plan-card">
-      <h3>Plan de Recuerdo</h3>
-      <p class="plan-duration">Duración: 2 meses</p>
-      <p class="price">$20.000</p>
-      <ul>
-        <li>10 imágenes seleccionadas</li>
-        <li>1 video de hasta 30 seg.</li>
-        <li>1 reseña biográfica</li>
-        <li>Acceso a través de código QR</li>
-      </ul>
-      <a href="https://wa.me/56946975652text=Hola,%20me%20interesa%20el%20Plan%20de%20Recuerdo.%20%C2%BFMe%20puedes%20dar%20m%C3%A1s%20informaci%C3%B3n?" class="whatsapp-button" target="_blank">¡Me interesa!</a>
-    </div>
-
-    <div class="plan-card">
-      <h3>Plan de Recuerdo</h3>
-      <p class="plan-duration">Duración: 6 meses</p>
-      <p class="price">$40.000</p>
-      <ul>
-        <li>10 imágenes seleccionadas</li>
-        <li>1 video de hasta 30 seg.</li>
-        <li>1 reseña biográfica</li>
-        <li>Acceso a través de código QR</li>
-      </ul>
-      <a href="https://wa.me/56946975652?text=Hola,%20me%20interesa%20el%20Plan%20de%20Recuerdo%20de%206%20meses.%20%C2%BFMe%20puedes%20dar%20m%C3%A1s%20informaci%C3%B3n?" class="whatsapp-button" target="_blank">¡Me interesa!</a>
-    </div>
-
-    <div class="plan-card">
-      <h3>Plan de Recuerdo</h3>
-      <p class="plan-duration">Duración: 1 año</p>
-      <p class="price">$60.000</p>
-      <ul>
-        <li>10 imágenes seleccionadas</li>
-        <li>1 video de hasta 30 seg.</li>
-        <li>1 reseña biográfica</li>
-        <li>Acceso a través de código QR</li>
-      </ul>
-      <a href="https://wa.me/56946975652?text=Hola,%20me%20interesa%20el%20Plan%20de%20Recuerdo%20de%201%20a%C3%B1o.%20%C2%BFMe%20puedes%20dar%20m%C3%A1s%20informaci%C3%B3n?" class="whatsapp-button" target="_blank">¡Me interesa!</a>
-    </div>
-
-    <div class="plan-card">
-      <h3>Plan de Recuerdo</h3>
-      <p class="plan-duration">Duración: Eterno</p>
-      <p class="price">$80.000</p>
-      <ul>
-        <li>10 imágenes seleccionadas</li>
-        <li>1 video de hasta 30 seg.</li>
-        <li>1 reseña biográfica</li>
-        <li>Acceso a través de código QR</li>
-      </ul>
-      <a href="https://wa.me/56946975652?text=Hola,%20me%20interesa%20el%20Plan%20Eterno.%20%C2%BFMe%20puedes%20dar%20m%C3%A1s%20informaci%C3%B3n?" class="whatsapp-button" target="_blank">¡Me interesa!</a>
-    </div>
-  </div>
-
-  <!-- Valores -->
-  <h2>Nuestros Valores</h2>
-  <p>Creemos que el amor no tiene fin. Hacemos de cada recuerdo un puente que une el pasado con el presente.</p>
 </body>
 </html>
